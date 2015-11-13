@@ -151,18 +151,7 @@ def download_all_response_pages(url, exLim, timeInterval):
         except PageDownloadError:
             interrupted = True
             break
-
     return outputs, interrupted
-
-
-def modify_url_to_handle_homonymy(url, homonymyIsOK = False):
-    """ Change url in order to use a certain subcorpus. """
-
-    if homonymyIsOK == False:
-        replacementPart = u'mycorp=%28%28tagging%253A%2522manual%2522%29%29&'
-    else:
-        replacementPart = u'mycorp=%28%28tagging%253A%2522none%2522%29%29&'
-    return url.replace(u'mycorp=&', replacementPart)
 
 
 def _create_empty_docnode(docNode):
@@ -348,19 +337,7 @@ def execute_query_seq(queryIterable, pathToDirectory, settings, statistics):
 
 
 def execute_query_seq_with_settings(queries, pathToDirectory, settings, statistics):
-
-    homonymy = settings['homonymy_in_main_allowed']
-    queriesPostprocessed = []
-    for corpName, fullQuery in queries:
-        if homonymy == True and corpName in Defaults.homonymy_option_available:
-             fullQuery = modify_url_to_handle_homonymy(fullQuery)
-        # if settings['rand']:
-        #      fullQuery = randomize_output(fullQuery)
-        pair = (corpName, fullQuery)
-        queriesPostprocessed.append(pair)
-
-    treeDic = execute_query_seq(queriesPostprocessed, pathToDirectory, settings, statistics)
-
+    treeDic = execute_query_seq(queries, pathToDirectory, settings, statistics)
     disconnected = [i for i in treeDic if treeDic[i] == None]
     emptyResponseList = [i for i in treeDic if i not in disconnected and treeDic[i]['tree'] == None]
     valid = {i: treeDic[i]['tree'] for i in treeDic if i not in disconnected}
