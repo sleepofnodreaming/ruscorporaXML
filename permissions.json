@@ -1,0 +1,38 @@
+{
+"list_of_acceptable_parameters_in_every_corpora": {
+           "main": ["gr", "sem", "form", "add", "lex", "distfrom", "distto", "semflags"],
+           "paper": ["gr", "sem", "lex", "distfrom", "distto"],
+           "spoken": ["gr", "sem", "lex", "distfrom", "distto"],
+           "accent": ["gr", "sem", "lex", "distfrom", "distto"],
+           "dialect": ["gr", "lex", "distfrom", "distto"],
+           "school": ["gr", "lex", "distfrom", "distto"],
+           "orthlib": ["gr", "lex", "distfrom", "distto"]
+           },
+
+"possible_lexeme_parameters": ["gr", "sem", "form", "add", "lex", "semflags"],
+
+"possible_distance_parameters": ["distfrom", "distto"],
+
+"wordform_defaults": {"parent": "0",
+                "level": "0",
+                "lex": "",
+                "gramm": "",
+                "sem": "",
+                "flags": "",
+                "m": "",
+                "sem-mod": ""
+      },
+
+"outer_to_inner": {"parent": "parent",
+                "level": "level",
+                "lex": "lex",
+                "gr": "gramm",
+                "sem": "sem",
+                "add": "flags",
+                "form": "m",
+                "semflags": "sem-mod"
+                },
+
+"homonymy_hadled": ["main"]
+
+}

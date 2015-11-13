@@ -1,0 +1,4 @@
+corpora: main, dialect
+lex: {"прихлебывая"}
+distfrom: 1 distto: 1
+lex: {пиво} semflags: {}
