@@ -86,10 +86,6 @@ def get_filename_by_url(url):
     return u'%s%s' % (cTime, qDscr)
 
 
-# def randomize_output(url):
-#     """ Add a random seed to the url. """
-#     seed = random.randint(1, 65000)
-#     return url.replace(u'&sort=gr_tagging&', u'&sort=random&seed=' + unicode(seed) + u'&')
 
 
 def extract_snippet_by_link(link): # OK
@@ -124,10 +120,14 @@ def estimate_page_number(elTree):
     return 0
 
 
-def download_all_response_pages(url, exLim, timeInterval): # OK
-    """ Download all the pages containing results of a search.
-    Put them into a list and return it, and a flag showing if all the pages were downloaded as well. """
-    print url
+def download_all_response_pages(url, exLim, timeInterval):
+    """ Download all the pager of an output required.
+    :param url: an initial query URL (no page number specified).
+    :param exLim: the maximum number of pages to require.
+    :param timeInterval: an interval between queries.
+    :return: (a list of XMLs, flag is the process was interrupted).
+
+    """
 
     interrupted = False
 
@@ -153,7 +153,6 @@ def download_all_response_pages(url, exLim, timeInterval): # OK
             break
 
     return outputs, interrupted
-
 
 
 def modify_url_to_handle_homonymy(url, homonymyIsOK = False):

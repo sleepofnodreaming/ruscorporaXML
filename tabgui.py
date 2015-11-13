@@ -6,7 +6,7 @@ from tkFileDialog import askdirectory, asksaveasfilename
 from tkMessageBox import *
 from corpora_data_downloader import *
 import urllib
-#from xml_statistics import STAT_TYPES, dic_to_file
+
 from data_reader import *
 from Queue import Queue
 
@@ -63,9 +63,6 @@ class _WindowLabels(object):
     cascade_file_label = u'Файл'
 
     cascade_file_save_query = u"Сохранить описание запроса"
-
-
-
 
 
 tabs = {'url': u'Ввод URL',
@@ -357,7 +354,6 @@ class GeneralSettings(Frame):
         self.randomizerChB.grid(column = 0, row = 4)
 
 
-
 def copy_values_to_statistic_list(innerFunc):
     """ A func to decorate the ones which call the downloading.
         Copy statistic flags from the frame to the self.stlist variable """
@@ -415,7 +411,7 @@ def process_unified_task(task):
     taskType, taskArgs = task['type'], task['args']
     data = None
     if taskType == 'text':
-        print taskArgs
+        # print taskArgs
 #        data = call_raw_text_query(*taskArgs)
         data = execute_query_seq_with_settings(*taskArgs)
     elif taskType == 'url':
@@ -504,7 +500,6 @@ class SmartTk(Tk):
                 self._terminate_all_and_exit()
 
 
-
 class TabInterface:
     def __init__(self):
 
@@ -590,14 +585,23 @@ class TabInterface:
         # поместить в общую очередь описание запроса: тип (text/url), настройки,
         settings = self.settings.getsettings() # словарь с настройками.
         if settings:
-            print settings
+            # print settings
             self.reqParser.read_corpora_query(self.qField)
             if self.reqParser.last_is_appropriate():
                 path = self._ask_path_to_directory()
                 if path:
 
+                    setParams = {}
+
                     if settings["rand"]:
-                        request = self.reqParser.get_subcorpora_query_list(sort='random', seed=unicode(random.randint(1, 65356)))
+                        setParams["sort"] = "random"
+                        setParams["seed"] = unicode(random.randint(1, 65356))
+
+                    if settings['homonymy_in_main_allowed']:
+                        setParams["mycorp"] = u'%28%28tagging%253A%2522manual%2522%29%29'
+
+                    if setParams:
+                        request = self.reqParser.get_subcorpora_query_list(**setParams)
                     else:
                         request = self.reqParser.get_subcorpora_query_list()
                     statistics = self.stlist
@@ -637,6 +641,7 @@ class TabInterface:
         """ Get the URL specified in the GUI, then convert it to the URL to get dumps. """
         url = self.urlText.get('1.0', END)
         url = url.replace(u'http://search.ruscorpora.ru/search.xml?', u'http://search.ruscorpora.ru/dump.xml?')
+        url = url.replace(u'http://search-beta.ruscorpora.ru/search.xml?', u'http://search.ruscorpora.ru/dump.xml?')
         return url
 
     @copy_values_to_statistic_list
@@ -651,7 +656,7 @@ class TabInterface:
             else:
                 dstPath = self._ask_path_to_directory()
                 isFilename = False
-            print isFilename
+
             if dstPath:
                 queueData = {'type': 'url',
                              'args': (url, dstPath, settings, isFilename, self.stlist),
