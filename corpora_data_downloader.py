@@ -329,6 +329,7 @@ def execute_query_seq(queryIterable, pathToDirectory, settings, statistics):
     resultDic = {}
 
     for corpName, query in queryIterable:
+        # print query
 
         output = execute_url_query(query, pathToDirectory, settings, False, statistics)
 

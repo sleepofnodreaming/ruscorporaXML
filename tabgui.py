@@ -598,7 +598,7 @@ class TabInterface:
                         setParams["seed"] = unicode(random.randint(1, 65356))
 
                     if settings['homonymy_in_main_allowed']:
-                        setParams["mycorp"] = u'%28%28tagging%253A%2522manual%2522%29%29'
+                        setParams["mycorp"] = urllib.unquote(u'%28%28tagging%253A%2522manual%2522%29%29')
 
                     if setParams:
                         request = self.reqParser.get_subcorpora_query_list(**setParams)
