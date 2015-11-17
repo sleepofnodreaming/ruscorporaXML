@@ -4,7 +4,7 @@ RuscorporaXML is a desktop client for ruscorpora.ru. The program prevents you fr
 
 ## Disclaimers
 * You cannot use the program for commercial purposes. It was developed to facilitate linguistic research being made with the use of the Russian National Corpus. You also should mind [these terms and conditions](http://www.ruscorpora.ru/corpora-usage.html).
-* The number of requests to the corpus you can make is limited: you can make only make 1000 requests before you are banned for a while. 
+* The number of requests to the corpus you can make is limited: you can only make 1000 requests before you are banned for a while. 
 
 # Requirements
 To run this, you'll need to have Python 2.7 installed (**Disclaimer**: you cannot run a Python2.7 program with a Python3 interpreter!). [LXML](http://lxml.de/tutorial.html) (at least v.3.3) is also required.
