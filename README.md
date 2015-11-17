@@ -10,7 +10,7 @@ RuscorporaXML is a desktop client for ruscorpora.ru. The program prevents you fr
 To run this, you'll need to have Python 2.7 installed (**Disclaimer**: you cannot run a Python2.7 program with a Python3 interpreter!). [LXML](http://lxml.de/tutorial.html) (at least v.3.3) is also required.
 
 ## Mac OS
-If you are on Mac, you should have a Python interpreter installed by default. However, you may probably not have the LXML lib. I *strongly recommend* you to update your Python using an installer from the [official Python site](https://www.python.org/downloads/). An up-to-date version of Python contains the package manager `pip`, so you will be able to install LXML by just running the following command in you Terminal: `pip install lxml`.
+If you are on Mac, you should have a Python interpreter installed by default. However, you may probably not have the LXML lib. I *strongly recommend* you to update your Python using an installer from the [official Python site](https://www.python.org/downloads/). An up-to-date version of Python contains the package manager `pip`, so you will be able to install LXML by just running the following command in your Terminal: `pip install lxml`.
 
 ## Windows
 (Un)fortunately, I do not have an active copy of Windows on my computer (and [have nothing to do with it](http://bash.im/quote/436599)), so I cannot instruct you. Contributions are welcome.
