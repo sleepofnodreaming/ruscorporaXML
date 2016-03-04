@@ -24,5 +24,9 @@ If you are on Mac, you should have a Python interpreter installed by default. Ho
 ## Windows
 (Un)fortunately, I do not have an active copy of Windows on my computer (and [have nothing to do with it](http://bash.im/quote/436599)), so I cannot instruct you. Contributions are welcome.
 
+# How can I use it?
+
+You can find the User Guide on [this project's Wiki](https://github.com/sleepofnodreaming/ruscorporaXML/wiki/User-Guide). 
+
 # What about a standalone app?
 There was a plan to build a standalone app for Mac (and also for Linux) but I do not know when this may come true. As for a Windows standalone version, I *do know* it is desired but this question is unresolved as I do not develop for Windows at all.
