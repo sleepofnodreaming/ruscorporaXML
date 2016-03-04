@@ -610,7 +610,7 @@ class TabInterface:
                                  'text_query': self.qField.get('1.0', END)}
                     self._process_request_dict(queueData)
             else:
-                errorText = _DialogueLabels.generate_raw_query_error(self.reqParser.lastUnread)
+                errorText = _DialogueLabels.generate_raw_query_error(self.reqParser.last_unread)
                 showerror(**errorText)
 
     def _ask_path_to_file(self):
